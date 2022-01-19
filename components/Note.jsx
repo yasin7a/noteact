@@ -364,7 +364,7 @@ const Note = () => {
         </div>
       )}
 
-      <button onClick={createNote} type="button" className="btnCreate z-50">
+      <button onClick={createNote} type="button" className="btnCreate z-40">
         <BsPlusLg />
       </button>
 
