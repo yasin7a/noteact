@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .note-app {
+    @apply max-w-[1120px] mx-auto px-4 py-2;
+  }
+  .note-head {
+    @apply flex items-center justify-between gap-x-2;
+  }
+  .title {
+    @apply font-medium text-white text-2xl sm:text-3xl mt-3;
+  }
+  .note-pop {
+    @apply fixed inset-0 bg-[#030115] z-50 px-4 py-2;
+  }
+
+  .popbtn {
+    @apply text-2xl py-4  text-gray-600 active:text-red-500;
+  }
+  .btnCreate {
+    @apply fixed right-2 bottom-2 -translate-x-1/2 -translate-y-1/2
+      bg-slate-800 p-4 rounded-full text-white drop-shadow-xl 
+      transition hover:text-green-500 active:scale-75 ease-out duration-200;
+  }
+  .input {
+    @apply w-full px-4 py-2 rounded bg-slate-900 focus:outline-none border border-transparent
+      focus:border-emerald-400 text-white font-Dosis font-normal text-sm placeholder:italic
+       placeholder:text-slate-600;
+  }
+
+  .addBtn {
+    @apply w-full bg-blue-900  mt-1 text-white p-3 rounded  transition ease-in duration-100  font-Dosis;
+  }
+  .action {
+    @apply transition-transform ease-in-out duration-300 absolute bg-black text-white px-2 py-1 text-sm z-20 right-7 -top-2 scale-0 rounded-sm drop-shadow origin-center origin-right;
+  }
+
+  .cross {
+    @apply absolute top-2/4 text-xl right-1 -translate-x-2/4 -translate-y-2/4 text-red-700;
+  }
+  .menu-item {
+    @apply block mt-3 text-white;
+  }
+}
+@layer utilities {
+  .todo-row {
+    border-left: 3px solid;
+    border-left-color: #13018e;
+  }
+  /* .todo-row:nth-child(4n + 1) {
+    border-left-color: #018e32;
+  } */
+
+  /* .todo-row:nth-child(4n + 2) {
+    border-left-color: #8e6401;
+  }
+
+  .todo-row:nth-child(4n + 3) {
+    border-left-color: #13018e;
+  }
+  .todo-row:nth-child(4n + 4) {
+    border-left-color: #8e0801;
+  } */
+  #checkMe + label {
+    display: block;
+    margin: 0.2em;
+    cursor: pointer;
+    padding: 0.2em;
+  }
+
+  #checkMe {
+    position: absolute;
+    left: 50%;
+    z-index: 20;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+
+  #checkMe + label::before {
+    content: "\2714";
+    border: 1px solid #a60808;
+    border-radius: 1.2em;
+    color: transparent;
+    transition: 0.2s;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 12px;
+    padding: 0px 4px;
+  }
+
+  #checkMe + label:active:before {
+    transform: scale(0);
+  }
+
+  #checkMe:checked + label::before {
+    background-color: #10005e;
+    border-color: transparent;
+    color: #fff;
+  }
+  .item-min-h {
+    min-height: 70px;
+  }
+  html::-webkit-scrollbar,
+  .bm-menu-wrap::-webkit-scrollbar,
+  .bm-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  html,
+  .bm-menu-wrap,
+  .bm-menu {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
