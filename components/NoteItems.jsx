@@ -70,7 +70,7 @@ const NoteItems = ({
              <MdOutlineDeleteForever/> <span>Delete</span>
             </button>
 
-            <button onClick={() => edit(id)} className="flex items-center gap-1 mt-1 hover:text-slate-400">
+            <button onClick={() => edit(id)} className="flex items-center gap-1 mt-3 hover:text-slate-400">
              <BiEditAlt/> <span>Edit</span>
             </button>
           </div>
