@@ -10,60 +10,60 @@ import { FaTimes } from "react-icons/fa";
 export default function Home() {
   let addBtn = React.useRef();
 
-  let [popout, setpopout] = React.useState(false);
-  let [ispop, setIspop] = React.useState(false);
-  let handlePop = () => {
-    setpopout(true);
-  };
+  // let [popout, setpopout] = React.useState(false);
+  // let [ispop, setIspop] = React.useState(false);
+  // let handlePop = () => {
+  //   setpopout(true);
+  // };
 
-  React.useEffect(() => {
-    if (
-      window.matchMedia("(display-mode: standalone)").matches ||
-      window.navigator.standalone === true
-    ) {
-      setIspop(true);
-      setpopout(true);
+  // React.useEffect(() => {
+  //   if (
+  //     window.matchMedia("(display-mode: standalone)").matches ||
+  //     window.navigator.standalone === true
+  //   ) {
+  //     setIspop(true);
+  //     setpopout(true);
 
-      deferredPrompt = null;
-    }
-    window.onload = () => {
-      let deferredPrompt;
+  //     deferredPrompt = null;
+  //   }
+  //   window.onload = () => {
+  //     let deferredPrompt;
 
-      if (
-        window.matchMedia("(display-mode: standalone)").matches ||
-        window.navigator.standalone === true
-      ) {
-        setIspop(true);
-        setpopout(true);
+  //     if (
+  //       window.matchMedia("(display-mode: standalone)").matches ||
+  //       window.navigator.standalone === true
+  //     ) {
+  //       setIspop(true);
+  //       setpopout(true);
 
-        deferredPrompt = null;
-      }
+  //       deferredPrompt = null;
+  //     }
 
-      window.addEventListener("beforeinstallprompt", (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        setpopout(false);
-      });
+  //     window.addEventListener("beforeinstallprompt", (e) => {
+  //       e.preventDefault();
+  //       deferredPrompt = e;
+  //       setpopout(false);
+  //     });
 
-      addBtn.current?.addEventListener("click", () => {
-        setpopout(true);
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choice) => {
-          if (choice.outcome === "accepted") {
-            console.log("User accepted");
-          } else {
-            console.log("User dismissed");
-          }
-        });
-        deferredPrompt = null;
-      });
+  //     addBtn.current?.addEventListener("click", () => {
+  //       setpopout(true);
+  //       deferredPrompt.prompt();
+  //       deferredPrompt.userChoice.then((choice) => {
+  //         if (choice.outcome === "accepted") {
+  //           console.log("User accepted");
+  //         } else {
+  //           console.log("User dismissed");
+  //         }
+  //       });
+  //       deferredPrompt = null;
+  //     });
 
-      window.addEventListener("appinstalled", () => {
-        deferredPrompt = null;
-        console.log("PWA was installed");
-      });
-    };
-  }, []);
+  //     window.addEventListener("appinstalled", () => {
+  //       deferredPrompt = null;
+  //       console.log("PWA was installed");
+  //     });
+  //   };
+  // }, []);
 
   return (
     <>
@@ -89,7 +89,7 @@ export default function Home() {
           </p>
         </footer>
       </div>
-      {popout ? (
+      {/* {popout ? (
         <></>
       ) : (
         <div className={ispop ? "hidden" : "block"}>
@@ -111,7 +111,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }
