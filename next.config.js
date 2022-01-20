@@ -6,7 +6,6 @@ module.exports = withPWA({
   pwa: {
     disable: !isProd,
     dest: "public",
-    register: true,
   },
   reactStrictMode: true,
 });

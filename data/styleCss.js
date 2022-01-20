@@ -26,7 +26,7 @@ var styles = {
     top: "0",
   },
   bmMenu: {
-    background: "#373a47",
+    background: "#010024",
     padding: "2.5em 1.5em 0",
     fontSize: "1.15em",
   },

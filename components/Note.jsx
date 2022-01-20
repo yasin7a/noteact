@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Menu from "react-burger-menu/lib/menus/slide";
+import Menu from "react-burger-menu/lib/menus/stack";
 import Link from "next/link";
 
 import styles from "../data/styleCss";
@@ -258,20 +258,6 @@ const Note = () => {
     setisSinglenote(true);
   };
 
-  let handleOnOpen = () => {
-    setIsmenu(!ismenu);
-    setInput((prevInp) => {
-      return {
-        ...prevInp,
-        isActionId: null,
-        isAction: false,
-      };
-    });
-  };
-  let handleOnClose = () => {
-    setIsmenu(false);
-  };
-
   // set local item in array
   useEffect(() => {
     localStorage.setItem("lists", JSON.stringify(items));
@@ -280,12 +266,6 @@ const Note = () => {
   useEffect(() => {
     setAudioBtn(new Audio("../media/button.mp3"));
   }, []);
-
-  useEffect(() => {
-    ismenu
-      ? document.body.classList?.add("overflow-hidden")
-      : document.body.classList?.remove("overflow-hidden");
-  }, [ismenu]);
 
   return (
     <>
@@ -299,10 +279,6 @@ const Note = () => {
         </div>
         <div className="project text-left">
           <Menu
-            onOpen={handleOnOpen}
-            onClose={handleOnClose}
-            isOpen={ismenu}
-            isClose={ismenu}
             right
             customBurgerIcon={<HiOutlineMenuAlt1 />}
             width={"280px"}
