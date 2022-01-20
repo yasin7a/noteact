@@ -11,12 +11,21 @@ export default function Home() {
   let addBtn = React.useRef();
 
   let [popout, setpopout] = React.useState(false);
-
+  let [ispop, setIspop] = React.useState(false);
   let handlePop = () => {
     setpopout(true);
   };
 
   React.useEffect(() => {
+    if (
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true
+    ) {
+      setIspop(true);
+      setpopout(true);
+
+      deferredPrompt = null;
+    }
     window.onload = () => {
       let deferredPrompt;
 
@@ -24,7 +33,9 @@ export default function Home() {
         window.matchMedia("(display-mode: standalone)").matches ||
         window.navigator.standalone === true
       ) {
+        setIspop(true);
         setpopout(true);
+
         deferredPrompt = null;
       }
 
@@ -81,22 +92,24 @@ export default function Home() {
       {popout ? (
         <></>
       ) : (
-        <div className="a2hsPop popinstall will-change-transform">
-          <button
-            onClick={handlePop}
-            className="text-white active:text-red-700 p-2 absolute top-0 right-0"
-          >
-            <FaTimes />
-          </button>
-          <h2 className="text-white text-2xl">
-            For better experience install in mobile
-          </h2>
-          <button
-            ref={addBtn}
-            className="text-white bg-blue-800 active:bg-blue-900 px-4 py-1 text-xl rounded mt-2"
-          >
-            Install
-          </button>
+        <div className={ispop ? "hidden" : "block"}>
+          <div className="a2hsPop popinstall will-change-transform">
+            <button
+              onClick={handlePop}
+              className="text-white active:text-red-700 p-2 absolute top-0 right-0"
+            >
+              <FaTimes />
+            </button>
+            <h2 className="text-white text-2xl">
+              For better experience install in mobile
+            </h2>
+            <button
+              ref={addBtn}
+              className="text-white bg-blue-800 active:bg-blue-900 px-4 py-1 text-xl rounded mt-2"
+            >
+              Install
+            </button>
+          </div>
         </div>
       )}
     </>
