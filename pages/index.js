@@ -39,8 +39,14 @@ export default function Home() {
         deferredPrompt = null;
       });
 
-      window.addEventListener("appinstalled", () => {
+      if (
+        window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone === true
+      ) {
         setpopout(true);
+      }
+
+      window.addEventListener("appinstalled", () => {
         deferredPrompt = null;
         console.log("PWA was installed");
       });
