@@ -20,6 +20,14 @@ export default function Home() {
     window.onload = () => {
       let deferredPrompt;
 
+      if (
+        window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone === true
+      ) {
+        setpopout(true);
+        deferredPrompt = null;
+      }
+
       window.addEventListener("beforeinstallprompt", (e) => {
         e.preventDefault();
         deferredPrompt = e;
@@ -39,19 +47,11 @@ export default function Home() {
         deferredPrompt = null;
       });
 
-      // if (
-      //   window.matchMedia("(display-mode: standalone)").matches ||
-      //   window.navigator.standalone === true
-      // ) {
-      //   setpopout(true);
-      //   deferredPrompt = null;
-      // }
-
-      window.matchMedia("(display-mode: standalone)").addEventListener("change", (evt) => {
-          if (evt.matches) {
-            setpopout(true);
-          }
-        });
+      // window.matchMedia("(display-mode: standalone)").addEventListener("change", (evt) => {
+      //     if (evt.matches) {
+      //       setpopout(true);
+      //     }
+      //   });
 
       window.addEventListener("appinstalled", () => {
         deferredPrompt = null;
