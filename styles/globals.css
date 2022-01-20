@@ -44,7 +44,7 @@
     @apply block mt-3 text-white;
   }
   .a2hsPop {
-    @apply bg-slate-900 px-2 py-6 text-center z-50 absolute bottom-0 right-0 left-0 translate-y-80;
+    @apply bg-slate-900 px-2 py-6 text-center z-50 absolute top-0 right-0 left-0 -translate-y-80;
   }
 }
 @layer utilities {
@@ -133,4 +133,5 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+ 
 }
