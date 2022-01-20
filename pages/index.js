@@ -39,12 +39,19 @@ export default function Home() {
         deferredPrompt = null;
       });
 
-      if (
-        window.matchMedia("(display-mode: standalone)").matches ||
-        window.navigator.standalone === true
-      ) {
-        setpopout(true);
-      }
+      // if (
+      //   window.matchMedia("(display-mode: standalone)").matches ||
+      //   window.navigator.standalone === true
+      // ) {
+      //   setpopout(true);
+      //   deferredPrompt = null;
+      // }
+
+      window.matchMedia("(display-mode: standalone)").addEventListener("change", (evt) => {
+          if (evt.matches) {
+            setpopout(true);
+          }
+        });
 
       window.addEventListener("appinstalled", () => {
         deferredPrompt = null;
