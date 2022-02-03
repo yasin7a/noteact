@@ -298,7 +298,7 @@ const Note = () => {
               Clear All
             </button>
             <p className="menu-item">
-              <Link href="https://lebriact.com/">
+              <Link href="https://yasinarafath.github.io/">
                 <a className="font-normal text-white hover:text-zinc-300 underline">
                   Others Project
                 </a>
